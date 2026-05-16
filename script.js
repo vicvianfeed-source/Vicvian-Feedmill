@@ -27,7 +27,7 @@ const SEED = {
     {id:"INV-002",date:"2026-05-05",customer:"Mthembu Dairy",items:[{pid:"p4",qty:10,price:22000}],status:"pending"},
     {id:"INV-003",date:"2026-05-10",customer:"Pork Palace Ltd",items:[{pid:"p3",qty:12,price:15000}],status:"overdue"},
   ],
-  users:[{id:"u_victor",name:"Victor",username:"victor",password:"VicvianAdmin@2024",role:"Admin",active:true,perms:null,email:"victor@vicvianfeedmill.com"}]
+  users:[{id:"u_victor",name:"Vicvian",username:"Vicvian",password:"VicvianFeed2026",role:"Admin",active:true,perms:null,email:"vicvian@vicvianfeedmill.com"}]
 };
 
 // ── STATE ──────────────────────────────────────────────────────────────────
@@ -64,12 +64,12 @@ function loginUI() {
   return `<div style="min-height:80vh;display:flex;align-items:center;justify-content:center">
     <div class="card" style="width:320px;max-width:100%">
       <div style="text-align:center;margin-bottom:1.75rem">
-        <div style="width:52px;height:52px;border-radius:50%;background:var(--green-light);display:flex;align-items:center;justify-content:center;margin:0 auto 12px">
-          <i class="ti ti-leaf" style="font-size:24px;color:var(--green-dark)"></i>
+        <div style="width:56px;height:56px;border-radius:50%;background:var(--green-light);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;box-shadow:0 0 0 1px rgba(99,153,34,0.12)">
+          <i class="ti ti-tractor" style="font-size:26px;color:var(--green-dark)"></i>
         </div>
-        <div style="font-weight:600;font-size:18px">${CO}</div>
+        <div style="font-weight:700;font-size:19px">${CO}</div>
         <div style="font-size:12px;color:var(--text2);margin-top:4px">
-          <i class="ti ti-shield-check" style="font-size:12px;color:var(--green)"></i> Authorised access only
+          <i class="ti ti-seedling" style="font-size:12px;color:var(--green)"></i> Agricultural operations hub
         </div>
       </div>
       ${UI.locked?`<div style="background:var(--red-light);border:0.5px solid #F09595;border-radius:var(--radius);padding:10px 14px;font-size:12px;color:var(--red-dark);margin-bottom:1rem;text-align:center">
@@ -635,4 +635,15 @@ function bindApp() {
 
 // ── BOOT ───────────────────────────────────────────────────────────────────
 loadData();
+const admin = D.users?.find(u=>u.id==="u_victor");
+if (admin) {
+  const changed = admin.name!=="Vicvian" || admin.username!=="Vicvian" || admin.password!=="VicvianFeed2026" || admin.email!=="vicvian@vicvianfeedmill.com";
+  if (changed) {
+    admin.name = "Vicvian";
+    admin.username = "Vicvian";
+    admin.password = "VicvianFeed2026";
+    admin.email = "vicvian@vicvianfeedmill.com";
+    try { localStorage.setItem(SKEY, JSON.stringify(D)); } catch {}
+  }
+}
 render();
