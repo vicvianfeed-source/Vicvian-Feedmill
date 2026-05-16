@@ -20,8 +20,8 @@ A lightweight feed mill management dashboard built as a static HTML/CSS/JS app.
 
 ## Default admin login
 
-- Username: `victor`
-- Password: `VicvianAdmin@2024`
+- Username: `Vicvian`
+- Password: `VicvianFeed2026`
 
 ## GitHub Pages Hosting
 
